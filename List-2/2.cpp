@@ -4,26 +4,37 @@
 
 using namespace std;
 
-int main()
+int cokolwiek()
 {
     srand(time(NULL));
 
-    int intujaca = rand() % 50 + 1;
-    int *adrIntujaca = &intujaca;
+    const int n = 10;
 
-    double dublujaca = rand() * (rand() % 100 + 1);
-    double *adrDublujaca = &dublujaca;
+    int *intujaca = new int;
+    *intujaca = rand() * 10;
 
-    float floatujaca = rand() % 10 / 5.0;
-    float *adrFloatujaca = &floatujaca;
+    double *dublujaca = new double;
+    *dublujaca = rand() * (rand() % 10 + 1);
 
-    int tab[10] = {};
-    int *adrTab = tab;
+    float *floatujaca = new float;
+    *floatujaca = rand() % 10 / 5.0;
+
+    int *tab = new int(n);
     for (int i = 0; i < 10; i++)
         tab[i] = rand() % 100 + 1;
 
-    cout << intujaca << ", " << dublujaca << ", " << floatujaca << endl;
+    cout << *intujaca << ", " << *dublujaca << ", " << *floatujaca << endl;
     for (int i = 0; i < 10; i++)
-        cout << tab[i] << ", ";
+        cout << *(tab + i) << ", ";
+
+    delete[] intujaca, dublujaca, floatujaca, tab;
+
+    return 0;
+}
+
+int main()
+{
+    cokolwiek();
+
     return 0;
 }
