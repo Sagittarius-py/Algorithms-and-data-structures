@@ -19,11 +19,10 @@ int *wypelnij()
 
 int odczytaj(int a[])
 {
-    int *adres = a;
 
     for (int i = 0; i < 10; i++)
     {
-        cout << *(adres + i) << " ";
+        cout << *(a + i) << " ";
     }
     return 0;
 }
