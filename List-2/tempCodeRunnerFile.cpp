@@ -1,1 +1,1 @@
-    delete[] adrIntujaca, adrDublujaca, adrFloatujaca, adrTab;
+(int)

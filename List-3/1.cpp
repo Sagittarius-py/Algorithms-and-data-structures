@@ -13,6 +13,8 @@ struct lista
     lista *pop;
 };
 
+lista *osoba = new lista;
+
 int main()
 {
 
