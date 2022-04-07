@@ -43,11 +43,13 @@ bool pop(lista *&l)
 void show(lista *&l)
 {
     for (lista *next = l; next != nullptr; next = next->pop)
+    {
         cout << next->imie << endl
              << next->nazwisko << endl
              << next->PESEL << endl
              << next->wiek << endl
              << endl;
+    }
 }
 
 void save(lista *&l)
@@ -55,10 +57,12 @@ void save(lista *&l)
     fstream file;
     file.open("plik.txt", ios::out);
     for (lista *next = l; next != nullptr; next = next->pop)
+    {
         file << next->imie << " "
              << next->nazwisko << " "
              << next->PESEL << " "
              << next->wiek << endl;
+    }
 
     file.close();
 }
