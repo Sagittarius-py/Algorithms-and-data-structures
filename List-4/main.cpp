@@ -172,15 +172,18 @@ void edytuj(lista *&l)
     }
 }
 
-void pokaz(lista *&l)
+void pokaz(lista *next)
 {
-    for (lista *next = l; next != nullptr; next = next->pop)
+    while (next != nullptr)
     {
+
         cout << next->imie << endl
              << next->nazwisko << endl
              << next->PESEL << endl
              << next->wiek << endl
              << endl;
+
+        next = next->pop;
     }
 }
 

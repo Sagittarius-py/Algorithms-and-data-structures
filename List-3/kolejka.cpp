@@ -96,47 +96,75 @@ public:
         file.close();
     }
 
+    void remove()
+    {
+        string str;
+        cout << "imie: ";
+        cin >> str;
+        for (lista *obj = pocz, *old = pocz; obj != nullptr;)
+            if (obj->imie == str)
+            {
+                if (obj == pocz)
+                {
+                    pop_front();
+                    old = pocz;
+                    obj = pocz;
+                }
+                else
+                {
+                    old->nast = obj->nast;
+                    if (kon == obj)
+                        kon = old;
+                    delete obj;
+                    obj = old->nast;
+                }
+            }
+            else
+            {
+                old = obj;
+                obj = obj->nast;
+            }
+    }
+
 private:
     lista *pocz = nullptr, *kon = nullptr;
     size_t size = 0;
 };
 
-int menu()
+void menu()
 {
-    int wybor = 0;
-
-    cout << "Co chcesz zrobic: " << endl
-         << "   1) Dodaj elemet na koncu" << endl
-         << "   2) Usun elemet z poczatku" << endl
-         << "   3) Pokaz elemety" << endl
-         << "   4) Wyczysc wszystkie elemety" << endl
-         << "   5) Zapisz kolejke" << endl
-         << "   6) exit" << endl;
-    cin >> wybor;
-    return wybor;
+    cout << "a) push_back" << endl
+         << "b) pop_front" << endl
+         << "c) show" << endl
+         << "d) clear" << endl
+         << "e) save" << endl
+         << "f) remove" << endl
+         << "g) exit" << endl;
 }
 
 int main()
 {
     List lista;
-    int wybor = 1;
+    menu();
+    char cmd;
     do
     {
-        wybor = menu();
-
-        if (wybor == 1)
+        cin >> cmd;
+        if (cmd == 'a')
             lista.push_back();
-        else if (wybor == 2)
+        else if (cmd == 'b')
             lista.pop_front();
-        else if (wybor == 3)
+        else if (cmd == 'c')
             lista.show();
-        else if (wybor == 4)
+        else if (cmd == 'd')
             lista.clear();
-        else if (wybor == 5)
+        else if (cmd == 'e')
             lista.save();
-        else if (wybor != 6)
+        else if (cmd == 'f')
+            lista.remove();
+        else if (cmd != 'g')
             menu();
-    } while (wybor != 6);
+    } while (cmd != 'g');
 
     return 0;
 }
